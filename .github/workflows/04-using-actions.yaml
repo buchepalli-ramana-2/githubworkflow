@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checout code
-              uses: actions@checkout@4
+              uses: actions/checkout@4
             - name: Printing folders
               run: ls
 
