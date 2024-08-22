@@ -18,11 +18,5 @@ jobs:
                 node-version: '20.x' 
             - name: Install Dependencies
               run: npm ci
-              # working-directory: 04-using-actions/react-app
             - name: Run Unit Test
-              run: npm run test
-              # working-directory: 04-using-actions/react-app
-
-        # 1. install deps of our react applicatin
-        # 2. Execute automated tests
-    
+              run: npm run test   
