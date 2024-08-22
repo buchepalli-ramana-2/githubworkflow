@@ -1,0 +1,20 @@
+name: 06 - contexts
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+
+jobs:
+    echo-data:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo "Event name: ${{ github.envent_name }}"
+                echo "Ref: ${{ github.ref }}"
+                echo "Actor: ${{ github.actor }}"
+                echo "SHA: ${{ github.sha }}"
+                echo "Workflow: ${{ github.workflow }}"
+                echo "RunId: ${{ github.run_id }}"
+                echo "Run Number: ${{ github.run_number }}"
