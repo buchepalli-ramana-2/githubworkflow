@@ -9,9 +9,14 @@ on:
     # push:
     #     branches:
     #         - main
-
+env:
+    MY_WORKFLOW_VAR: 'workflow'
+    MY_OVERWRITTEN_VAR: 'workflow'
 jobs:
     echo-data:
+        env:
+            MY_WORKFLOW_VAR: 'job'
+            MY_OVERWRITTEN_VAR: 'job'
         runs-on: ubuntu-latest
         steps:
             - run: |
@@ -25,3 +30,10 @@ jobs:
             - name: Retrieve Variable
               run: |
                 echo "Variable value: ${{ vars.MY_VAR }}"
+            - name: Print Env Variables
+              env:
+                MY_OVERWRITTEN_VAR: 'step'
+              run: |
+                echo "Workflow env: ${{env.MY_WORKFLOW_VAR}}
+                echo "OverWritten env: ${{env.MY_OVERWRITTEN_VAR}}
+            
