@@ -24,8 +24,8 @@ jobs:
                 echo "Runner OS: ${{ runner.os }}"
 
             - name: Branch details
-              if: github.ref == 'ref/heads/main' && input.debug == 'true'
+              if: github.ref == 'ref/heads/main' && inputs.debug == 'true'
               run: echo "I am triggered from main"
-              
+
             - name: Greeting
               run: echo "Hello world!"
