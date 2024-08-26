@@ -29,4 +29,6 @@ jobs:
               run: echo "I am triggered from main"
 
             - name: Greetings
-              run: echo "Hello world!"
+              run: | 
+                echo 'Hello world!'
+                echo '${{inputs.debug }}'
