@@ -1,5 +1,5 @@
 name: 07 - Using Expressions
-run-name: 07 - Using Expressions | DEBUG - ${{ inputs.debug }} == 'true' && 'ON' || 'OFF'
+run-name: 07 - Using Expressions | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}
 
 on:
     push:
@@ -9,7 +9,7 @@ on:
       inputs:
         debug:
             type: boolean
-            default: 'false'
+            default: false
 
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: '[debug] print startup data'
-              if: ${{ inputs.debug }} == 'true'
+              if: ${{ inputs.debug }}
               run: |
                 echo "Triggered by: ${{ github.event_name }}"
                 echo "Branch: ${{ github.ref }}"
@@ -25,10 +25,9 @@ jobs:
                 echo "Runner OS: ${{ runner.os }}"
 
             - name: '[debug] print when triggered from main'
-              if: ${{ inputs.debug }} == 'true' && ${{ github.ref }} == 'refs/heads/main'
+              if: ${{ inputs.debug && github.ref  == 'refs/heads/main'}}
               run: echo "I am triggered from main"
 
             - name: Greetings
               run: | 
                 echo 'Hello world!'
-                echo '${{inputs.debug }}'
