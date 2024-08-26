@@ -18,26 +18,29 @@ jobs:
                 EOF>>
 
             - name: Bug step
+              if: ${{ contains('fix',github.event.pull_request.title) && !cancelled()}}
               run: echo "I am a bug fix"
 
             - name: Wait for cancellation
               run: sleep 20
 
             - name: Failing step
-              run: exit 1
+              run: | 
+               echo 'I am failing'
+               exit 1
 
             - name: I will be skipped
-              if: success()
+              if: ${{ success() }}
               run: echo "I will print if previous steps succeed"
 
             - name: I will execute
-              if: failure()
+              if: ${{ failure() }}
               run: echo "I will print if any previous step fails"
 
             - name: i will execute
-              if: !cancelled()
+              if: ${{ !cancelled() }}
               run: echo "I will always print, except when the workflow is cancelled"
 
             - name: I will execute when cancelled
-              if: cancelled()
+              if: ${{ cancelled() }}
               run: echo "I will print only workflow has cancelled"
