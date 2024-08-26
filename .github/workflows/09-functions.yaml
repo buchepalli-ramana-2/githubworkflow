@@ -2,7 +2,7 @@ name: 09 - Using Functions
 
 on:
     pull_request: 
-        type: [opened]
+        type: ['opened','synchronize']
         branches:
             - main
     workflow_dispatch:
