@@ -18,7 +18,7 @@ jobs:
                 EOF
 
             - name: Bug step
-              if: ${{ contains('fix',github.event.pull_request.title) && !cancelled()}}
+              if: ${{ !cancelled() && contains(github.event.pull_request.title, 'fix')}}
               run: echo "I am a bug fix"
 
             - name: Wait for cancellation
