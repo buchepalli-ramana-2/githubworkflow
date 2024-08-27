@@ -15,6 +15,7 @@ on:
                     - Dev
                     - NonProd
                     - Prod
+                default: Dev
             tag:
                 type: choice
                 options:
