@@ -48,4 +48,4 @@ jobs:
             - name: Print Outputs
               run: | 
                 echo "${{ needs.build.outputs.output1 }}"
-                cat "$GITHUB_OUTPUT"
+                cat "Contents of output variable file is $GITHUB_OUTPUT"
