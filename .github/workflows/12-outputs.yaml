@@ -48,4 +48,5 @@ jobs:
             - name: Print Outputs
               run: | 
                 echo "${{ needs.build.outputs.output1 }}"
-                cat "Contents of output variable file is $GITHUB_OUTPUT"
+                contents=$(cat "$GITHUB_OUTPUT")
+                echo  "Contents of output file are: $contents"
