@@ -28,7 +28,8 @@ jobs:
                 node-version: ${{ matrix.node-version }}
             - name: Setup Node1
               if: (matrix.node-version == '21.x' && matrix.tag == 'experimental')
-              run: exit 1
+              # run: exit 1
+              run: echo ${{ matrix.node-version}}'-'${{matrix.tag}}
             - name: Perform some Tests
               run: |
                 echo "Running tests on OS ${{ matrix.os}} and NodeJS ${{ matrix.node-version }}"
@@ -37,7 +38,7 @@ jobs:
               run: echo "Upload test results.."
     
     include-example:
-      name: ${{matrix.color}}-${{matrix.shape}}-${{matrix.size}}
+      name: ${{matrix.color}}-${{matrix.shape}}-${{matrix.size}}-${{matrix.opacity}}
       runs-on: ubuntu-latest
       strategy:
         matrix:
@@ -51,9 +52,10 @@ jobs:
             - small
             - large
           include:
+            - opacity: 50
             - color: red
               shape: triangle
       steps:
         - name: Dummy step
           run: | 
-            echo ${{matrix.color}}"-"${{matrix.shape}}"-"${{matrix.size}}
+            echo ${{matrix.color}}"-"${{matrix.shape}}"-"${{matrix.size}}"-"${{matrix.opacity}}
