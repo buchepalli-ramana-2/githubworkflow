@@ -21,6 +21,7 @@ jobs:
     deploy-prod:
         runs-on: ubuntu-latest
         environment: prod
+        needs: e2e-testing
         env:
             my-env-value: ${{vars.MY_ENV_VALUE || 'default value'}}
         steps:
