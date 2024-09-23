@@ -59,6 +59,7 @@ jobs:
             - opacity: 50
           exclude:
             - opacity: 75
+            - color: red
       steps:
         - name: Dummy step
           run: | 
