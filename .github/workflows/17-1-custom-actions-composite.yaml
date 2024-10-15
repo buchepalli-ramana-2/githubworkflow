@@ -6,6 +6,7 @@ on:
         inputs:
             target-env:
                 type: choice
+                description: which environment do you want setup node
                 default: dev
                 options:
                     - dev
